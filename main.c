@@ -20,7 +20,7 @@ void GPIO_Config(void) {
 void LedTask(void *pvParameters) {
     LedConfig_t *config = (LedConfig_t *)pvParameters;
     uint32_t delay_ms = (uint32_t)(500.0f / config->frequency);
-    for (;;) {
+    while (1) {
         GPIOA->ODR ^= config->pin;           
         vTaskDelay(pdMS_TO_TICKS(delay_ms)); 
     }
